@@ -9,9 +9,9 @@
 | 资源名称 | BV 号 / 链接 | 核心内容 | 学习目的 | 时长 |
 |---------|--------------|-----------|-----------|-------|
 | **小白必看：7分生信范文** | BV1um411X76P | 拆解一篇生信文章的结构与常见分析步骤（无代码） | 建立对文章结构与分析流程的认识 | ~2h |
-| **生信分析教程 1（建议看 1–6 集）** | BV14yQgY5EiD | 差异分析、富集分析等核心步骤讲解 | 构建 RNA-seq 分析概念框架 | ~1–2h |
+| **生信分析教程 1**（建议看 1–6 集） | BV14yQgY5EiD | 差异分析、富集分析等核心步骤讲解 | 构建 RNA-seq 分析概念框架 | ~1–2h |
 | **R 语言生信分析（51 集）** | BV1bq4y1T76W | R 基础 + 完整生信流程的保姆级教学 | 从零开始上手实际操作 | ~12h |
-| **Basic_Bioinformatics_Analysis（开源仓库）** | [跳转链接](https://github.com/A-Ben-Mao/Basic_Bioinformatics_Analysis) | 常用差异分析、富集分析等代码模板 | 实战使用、快速复用代码 | 自定 |
+| **Basic_Bioinformatics_Analysis** | [跳转链接](https://github.com/A-Ben-Mao/Basic_Bioinformatics_Analysis) | 本人自学后重新梳理并完善的全代码 | 实战使用、快速复用代码 | 自定 |
 
 ---
 
