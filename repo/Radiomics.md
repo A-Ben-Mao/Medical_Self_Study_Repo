@@ -22,3 +22,10 @@
 时长约1.5～2h
 
 ---
+3.通过3DSlicer进行颅骨剥离
+
+文字说明：https://forum.slicercn.com/t/topic/5511
+
+视频演示（非官方）：【3d slicer 计算大脑体积，去除颅骨】 https://www.bilibili.com/video/BV1vm421V7ZW/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
+
+---
