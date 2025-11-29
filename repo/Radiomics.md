@@ -6,6 +6,8 @@
 
 【影像组学 3Dslicer软件教学（下）】 https://www.bilibili.com/video/BV1VP4y1b73b/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
+时长约1h
+
 ---
 2.颅脑核磁标准化处理
 
@@ -13,3 +15,8 @@
 
 【神经影像处理_SPM实操_PET和MRI的图像标准化】 https://www.bilibili.com/video/BV1Y1YXzME9k/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
+使用Matlab SPM12与MRIcroGL进行头核磁ROI的标准化与Overlap图的制作（需要csdn会员才能查看全文）：https://blog.csdn.net/YimingChen98/article/details/129855869
+
+时长约1.5～2h
+
+---
