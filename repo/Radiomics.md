@@ -1,1 +1,15 @@
+正在装修，敬请期待......
+---
+1.3DSlicer基础操作
+
+【影像组学 3Dslicer软件教学（上）】 https://www.bilibili.com/video/BV1w44y147ph/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
+
+【影像组学 3Dslicer软件教学（下）】 https://www.bilibili.com/video/BV1VP4y1b73b/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
+
+---
+2.颅脑核磁标准化处理
+
+【【影像组学】一个小时带你全流程入门影像组学 | 从dicom到nifti格式到序列ANTs配准等预处理 | 从特征提取到特征工程到机器学习】 https://www.bilibili.com/video/BV1L7FveEE7s/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
+
+【神经影像处理_SPM实操_PET和MRI的图像标准化】 https://www.bilibili.com/video/BV1Y1YXzME9k/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
