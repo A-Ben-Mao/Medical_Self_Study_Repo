@@ -24,7 +24,7 @@
 
 【浙大学姐手把手教你复苏细胞-超详细版🧪】 https://www.bilibili.com/video/BV1cRrcYnEzq/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
-3.2 细胞传代
+3.2 细胞传代（**可以优先看这个视频，有一些泛用性的基本操作实操指导**）
 
 【浙大学姐手把手教你养细胞-超详细版】 https://www.bilibili.com/video/BV1c8CYYyEH6/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
@@ -40,3 +40,4 @@
 
 【浙大学姐手把手教你冻存细胞-超详细版🧪】 https://www.bilibili.com/video/BV1rh6UY7Ez9/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
 
+---
