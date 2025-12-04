@@ -33,7 +33,7 @@
 ### 3. [颅脑影像处理](./repo/Radiomics.md)——ing
 - 涉及一些基础的软件使用，拓展的代码处理等
 
-### 4. [细胞实验](./repo/cell_experiments.md)——ing
+### 4. [细胞实验基础](./repo/cell_experiments.md)——ing
 - 涉及体外细胞实验的一些基础理论知识与实操
   
 ---
