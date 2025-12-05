@@ -1,10 +1,8 @@
-正在装修，敬请期待......
----
-# 思维导图辅助理解
+# 🧠 思维导图辅助理解
 
-同时附上[完整思维导图](images/cell_experiments_flowchart.png)，搭配学习更佳~
+同时附上[完整思维导图](flowchart_and_mindmap/cell_experiments_mindmap.png)，搭配学习更佳~
 
-![流程图](images/cell_experiments_flowchart.png)
+![流程图](flowchart_and_mindmap/cell_experiments_flowchart.png)
 
 ---
 # 1.一些细胞实验的基础理论知识
