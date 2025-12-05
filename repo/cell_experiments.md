@@ -1,5 +1,12 @@
 正在装修，敬请期待......
 ---
+# 思维导图辅助理解
+
+同时附上[完整思维导图](images/cell_experiments_mindmap.png)，搭配学习更佳~
+
+![流程图](images/cell_experiments_flowchart.png)
+
+---
 # 1.一些细胞实验的基础理论知识
 
 [【临床医生做基础科研——15.细胞实验相关基础知识】](https://www.bilibili.com/video/BV1UZ4y1U7Cp)——13min
@@ -117,7 +124,9 @@
 ## 4.4 信号通路/蛋白变化
 
 ### 4.4.x qPCR/免疫荧光/WB
+暂未进行学习，后期拓展补充
 
 ## 4.5 分子操作类（干预/操纵）
 
 ### 4.5.x 转染 / 病毒感染（siRNA / shRNA / CRISPR / 质粒）
+暂未进行学习，后期拓展补充
