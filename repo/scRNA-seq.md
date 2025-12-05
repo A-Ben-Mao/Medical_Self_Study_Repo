@@ -2,7 +2,7 @@
 ---
 1.单细胞测序代码讲解
 
-【0. 单细胞转录组简介】 https://www.bilibili.com/video/BV1HD421T77W/?share_source=copy_web&vd_source=b95542217fcd022ca9ecd4f03e450342
+[【0. 单细胞转录组简介】](https://www.bilibili.com/video/BV1HD421T77W/)
 
 时长约5h
 
