@@ -27,10 +27,10 @@
 ### 1. [普通转录组学](./repo/Bulk_RNA-seq.md)——已归档
 - 涉及普通转录组（Bulk RNA-seq）文章套路解读及具体分析方法
 
-### 2. [颅脑影像处理](./repo/Radiomics.md)——ing
+### 2. [颅脑影像处理](./repo/Radiomics.md)
 - 涉及一些基础的软件使用，拓展的代码处理等
 
-### 3. [细胞实验基础](./repo/cell_experiments.md)——ing
+### 3. [细胞实验基础](./repo/cell_experiments.md)
 - 涉及体外细胞实验的一些基础理论知识与实操
   
 ---
