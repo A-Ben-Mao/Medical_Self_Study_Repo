@@ -63,9 +63,61 @@
 
 ---
 
-# 4.一些基础细胞实验操作演示
+# 4.一些基础细胞实验操作演示（以下内容请根据实验需要选择学习）
 
-## 4.1 细胞划痕实验
+## 4.1 细胞增殖与毒性检测
 
-## 4.2 CKK-8实验
+### 4.1.1 CCK-8实验
 
+[【大家千呼万唤的CCK8超详细教程终于来啦！】](https://www.bilibili.com/video/BV12AQgYGE8J)（结合药物干预实操）
+
+[【【实验室日常】导师当院士这事需要每天努力！| CCK8检测细胞活力】](https://www.bilibili.com/video/BV1Ya411g7fG)（真实实验操作）
+
+[【细胞功能实验合集（5）：CCK8增殖实验 上篇 实验步骤及常见问题】](https://www.bilibili.com/video/BV1ch4y1R7GL)
+
+[【细胞功能实验合集（6）：CCK8增殖实验 下篇 数据结果作图-折线图与IC50拟合曲线】](https://www.bilibili.com/video/BV1Qh411T7Wp)
+- 实验操作及结果处理与解读均有
+
+## 4.2 细胞迁移与侵袭能力检测
+
+### 4.2.1 细胞划痕实验
+
+[【细胞功能实验合集（3）：细胞划痕实验 上篇 实验步骤及常见问题】](https://www.bilibili.com/video/BV1pX4y1m7K4)
+
+[【细胞功能实验合集（4）：细胞划痕实验 下篇 实验结果统计-宽度法及面积法】](https://www.bilibili.com/video/BV1Sh4y1s7jo)
+- 实验操作及结果处理与解读均有
+- 该up主系列视频质量上等，可适度拓展
+- 评论区也是大佬云集
+
+### 4.2.2 Transwell 实验
+
+[【细胞功能实验合集（1）：Transwell侵袭实验 上篇 实验步骤详解】](https://www.bilibili.com/video/BV1ph411379b)
+
+[【细胞功能实验合集（2）：Transwell侵袭实验 下篇 ImageJ统计结果】](https://www.bilibili.com/video/BV1Fc411s7Qc)
+- 实验操作及结果处理与解读均有
+
+[【Transwell | 细胞迁移的实验操作全过程具体演示】](https://www.bilibili.com/video/BV1KV4y1V7MP)
+
+## 4.3 细胞凋亡检测
+
+[【科研干货 | 一键入门细胞凋亡检测】](https://www.bilibili.com/video/BV1D8411U7pC)
+- 如果你的研究涉及凋亡，该视频简短讲解了一些凋亡的基本内容可以学习
+- 涉及凋亡理论和对应的实验原理
+
+### 4.3.1 流式细胞术 Annexin V-FITC/PI 双染法（涉及到流式细胞仪的使用，需要额外学习）
+
+[【睦科生物 | 细胞凋亡具体实验步骤与注意事项】](https://www.bilibili.com/video/BV1qT411G7P9)
+
+[【A211 Annexin V-FITC PI凋亡检测实验操作演示】](https://www.bilibili.com/video/BV1fT411D7bX)
+
+### 4.3.2 TUNEL 法
+
+[【A112 TUNEL细胞凋亡检测（细胞爬片样本）实验操作演示】](https://www.bilibili.com/video/BV1EY411r7a4)
+
+## 4.4 信号通路/蛋白变化
+
+### 4.4.x qPCR/免疫荧光/WB
+
+## 4.5 分子操作类（干预/操纵）
+
+### 4.5.x 转染 / 病毒感染（siRNA / shRNA / CRISPR / 质粒）
