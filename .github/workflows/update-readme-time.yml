@@ -1,0 +1,40 @@
+name: Update README Time
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  update-time:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update time in README.md
+        run: |
+          if [ ! -f README.md ]; then
+            echo "README.md not found, skip."
+            exit 0
+          fi
+
+          CURRENT_TIME=$(TZ=Asia/Shanghai date "+%Y-%m-%d %H:%M:%S")
+
+          # 使用 sed 替换“最近一次更新时间为：”后面的内容
+          sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${CURRENT_TIME}/" README.md
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git add README.md
+            git commit -m "docs: update README last update time"
+            git push
+          fi
