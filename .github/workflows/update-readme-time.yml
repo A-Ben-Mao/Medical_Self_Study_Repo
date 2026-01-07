@@ -15,18 +15,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # ⭐ 拉完整历史，避免 HEAD~1 问题
 
       - name: Update module last updated date in README
         run: |
           if [ ! -f README.md ]; then
-            echo "README.md not found."
             exit 0
           fi
 
           TODAY=$(TZ=Asia/Shanghai date "+%Y-%m-%d")
 
-          # 获取本次提交中变更的文件
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          BEFORE_SHA="${{ github.event.before }}"
+          AFTER_SHA="${{ github.sha }}"
+
+          # 如果是第一次提交，before 会是全 0
+          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            CHANGED_FILES=$(git show --name-only --pretty="" "$AFTER_SHA")
+          else
+            CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA")
+          fi
 
           update_last_time() {
             MODULE="$1"
@@ -53,7 +61,6 @@ jobs:
             esac
           done
 
-          # 只要 README 被自动修改，就同步更新底部“最近一次更新时间”
           if ! git diff --quiet README.md; then
             sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${TODAY}/" README.md
           fi
