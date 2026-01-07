@@ -1,4 +1,4 @@
-name: Auto Update README Module Dates
+name: Auto Update README Module Last Updated Time
 
 on:
   push:
@@ -13,51 +13,52 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update README module dates
+      - name: Update module last updated date in README
         run: |
           if [ ! -f README.md ]; then
+            echo "README.md not found."
             exit 0
           fi
 
           TODAY=$(TZ=Asia/Shanghai date "+%Y-%m-%d")
 
-          # 获取本次 push 中变更的文件
+          # 获取本次提交中变更的文件
           CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
 
-          update_row() {
+          update_last_time() {
             MODULE="$1"
-            sed -i "s/^\(| ${MODULE} | [0-9\-]\+ | \).*\(|\)$/\1${TODAY}\2/" README.md
+            sed -i "s/^\(| ${MODULE} | [^|]* | [0-9\-]\+ | \).*\(|\)$/\1${TODAY}\2/" README.md
           }
 
           for file in $CHANGED_FILES; do
             case "$file" in
               repo/Bulk_RNA-seq.md)
-                update_row "普通转录组学"
+                update_last_time "普通转录组学"
                 ;;
               repo/Radiomics.md)
-                update_row "颅脑影像处理"
+                update_last_time "颅脑影像处理"
                 ;;
               repo/Cell_experiments.md)
-                update_row "细胞实验基础"
+                update_last_time "细胞实验基础"
                 ;;
               repo/Ethology.md)
-                update_row "常见动物行为学实验"
+                update_last_time "常见动物行为学实验"
                 ;;
-              Data_processing.md)
-                update_row "常用实验数据处理"
+              repo/Data_processing.md)
+                update_last_time "常用实验数据处理"
                 ;;
             esac
           done
 
-          # 更新 README 底部“最近一次更新时间”
-          if [ -n "$CHANGED_FILES" ]; then
+          # 只要 README 被自动修改，就同步更新底部“最近一次更新时间”
+          if ! git diff --quiet README.md; then
             sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${TODAY}/" README.md
           fi
 
-      - name: Commit and push if needed
+      - name: Commit and push if README changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -68,5 +69,5 @@ jobs:
           fi
 
           git add README.md
-          git commit -m "docs: auto update module update dates"
+          git commit -m "docs: auto update module last updated date"
           git push
