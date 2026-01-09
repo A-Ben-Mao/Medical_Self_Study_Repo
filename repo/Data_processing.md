@@ -23,7 +23,7 @@
 # 2. 免疫荧光
 
 ## 2.1 细胞计数（使用ImageJ）
-**经过整理后的“最简”流程**
+**经过整理后的“最简”Protocol**
 > 1. `"Image-Type-8-bit"`（转换图片为8-bit）
 > 2. `"Image-Adjust-Threshold"`（调整阈值）
 > 3. `"Process-Binary-Fill Holes"`（填补细胞空隙，可选）
@@ -40,7 +40,7 @@
 - 我一般将之用于DAPI计数，也就是细胞核的总数统计
 
 ## 2.2 共定位分析及双染计数（使用ImageJ）
-**双染计数，经过整理后的“最简”流程**
+**双染计数，经过整理后的“最简”Protocol**
 
 前置步骤：如果是合并通道需要先：`"Image-Color-Split Channels"`（分离通道）
 
