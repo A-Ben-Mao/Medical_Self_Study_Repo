@@ -6,13 +6,18 @@
 - 故而在这里进行整理，方便自己及各位同学后期查阅
 
 ---
-# 仪器与软件
+# 软件篇
 
-## 1.1 奥林巴斯荧光显微镜——软件篇
+## 1.1 ImageJ
 
-[对应软件（OlyVIA）官方下载](https://lifescience.evidentscientific.com.cn/zh/downloads/detail-iframe/?0%5Bdownloads%5D%5Bid%5D=847254061)
+软件下载：[官方下载页面](https://imagej.net/downloads)
+- 我一般下载Fiji，可以简单理解为带了一些常用插件的ImageJ
 
-[基础操作说明](https://zhuanlan.zhihu.com/p/1943622892655969723)
+## 1.2 奥林巴斯荧光显微镜相关内容
+软件下载：[对应软件（OlyVIA）官方下载](https://lifescience.evidentscientific.com.cn/zh/downloads/detail-iframe/?0%5Bdownloads%5D%5Bid%5D=847254061)
+- 仅支持Windoes系统（截止20260109）
+
+基础操作：[Olympus OlyVIA使用笔记丨如何处理荧光共聚焦显微镜拍摄的免疫荧光染色结果](https://zhuanlan.zhihu.com/p/1943622892655969723)
 
 ---
 # 免疫荧光
