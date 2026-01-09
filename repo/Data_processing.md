@@ -15,7 +15,7 @@
 
 ## 1.2 奥林巴斯荧光显微镜相关内容
 软件下载：[对应软件（OlyVIA）官方下载](https://lifescience.evidentscientific.com.cn/zh/downloads/detail-iframe/?0%5Bdownloads%5D%5Bid%5D=847254061)
-- 仅支持Windoes系统（截止20260109）
+- 仅支持Windows系统（截止20260109）
 
 基础操作：[Olympus OlyVIA使用笔记丨如何处理荧光共聚焦显微镜拍摄的免疫荧光染色结果](https://zhuanlan.zhihu.com/p/1943622892655969723)
 
@@ -25,7 +25,7 @@
 ## 2.1 细胞计数（使用ImageJ）
 > 经过整理后的“最简”流程
 > 
-> "Image-Type-8-bit"（转换图片为8-bit）——"Image-Adjust-Threshold"（调整阈值）——"Process-Binary-Fill Holes"（填补细胞空隙，可选）——"Process-Binary-Watershed"（分离相连细胞，可选）——"Analyze-Analyze Particles"（细胞计数）
+> `"Image-Type-8-bit"`（转换图片为8-bit）——`"Image-Adjust-Threshold"`（调整阈值）——`"Process-Binary-Fill Holes"`（填补细胞空隙，可选）——`"Process-Binary-Watershed"`（分离相连细胞，可选）——`"Analyze-Analyze Particles"`（细胞计数）
 
 文字资料：[ImageJ实用技巧——自动细胞计数(解放双手篇)](https://zhuanlan.zhihu.com/p/54959707)
 
@@ -39,11 +39,11 @@
 >
 > - 如果是合并通道需要先："Image-Color-Split Channels"（分离通道）
 > 
-> - 对每一个需要分析的通道（方法一）："Image-Type-8-bit"（转换图片为8-bit）——"Image-Adjust-Threshold"（调整阈值）——"Process-Binary-Fill Holes"（填补细胞空隙，可选）——"Process-Binary-Watershed"（分离相连细胞，可选）——选中感兴趣区域后，"Edit-Selection-Creat selection"（框选目标区域）——"Analyze-Tools-ROI manager-Add"（创建感兴趣区域ROI）
+> - 对每一个需要分析的通道（方法一）：`"Image-Type-8-bit"`（转换图片为8-bit）——`"Image-Adjust-Threshold"`（调整阈值）——`"Process-Binary-Fill Holes"`（填补细胞空隙，可选）——`"Process-Binary-Watershed"`（分离相连细胞，可选）——选中感兴趣区域后，`"Edit-Selection-Creat selection"`（框选目标区域）——`"Analyze-Tools-ROI manager-Add"`（创建感兴趣区域ROI）
 >
-> - 对每一个需要分析的通道（方法二）："Image-Type-8-bit"（转换图片为8-bit）——"Image-Adjust-Threshold"（调整阈值）——"Process-Binary-Fill Holes"（填补细胞空隙，可选）——"Process-Binary-Watershed"（分离相连细胞，可选）——"Analyze-Analyze Particles"（细胞计数）——全选ROI后右键，点击"OR(Combine)"，再依次点击"Add"-"Delete"，生成整合后的ROI
+> - 对每一个需要分析的通道（方法二）：`"Image-Type-8-bit"`（转换图片为8-bit）——`"Image-Adjust-Threshold"`（调整阈值）——`"Process-Binary-Fill Holes"`（填补细胞空隙，可选）——`"Process-Binary-Watershed"`（分离相连细胞，可选）——`"Analyze-Analyze Particles"`（细胞计数）——全选ROI后右键，点击`"OR(Combine)"`，再依次点击`"Add"`，`"Delete"`，生成整合后的ROI
 >
-> - 选择完ROI后，在"ROI manager"窗口，全选多个通道的ROI，右键"AND"（取交集），点击"Add"，选中图片上取交集后的ROI，右键"Creat Mask"（或"Edit-Selection-Create Mask"），随后在Mask上"Analyze-Analyze Particles"（细胞计数）
+> - 选择完ROI后，在"ROI manager"窗口，全选多个通道的ROI，右键`"AND"`（取交集），点击`"Add"`，选中图片上取交集后的ROI，右键`"Creat Mask"`（或`"Edit-Selection-Create Mask"`），随后在Mask上`"Analyze-Analyze Particles"`（细胞计数）
 
 [【利用ImageJ完成双重免疫荧光共定位与计数分析】](https://www.bilibili.com/video/BV19gkzBTE8K)
 - 共定位分析借助“colocalization finder”插件完成，点击此处跳转[插件官方页面](https://imagej.net/ij/plugins/colocalization-finder.htmlv)
