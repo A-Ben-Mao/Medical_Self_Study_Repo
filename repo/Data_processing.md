@@ -18,10 +18,20 @@
 # 免疫荧光
 
 ## 2.1 细胞计数（使用ImageJ）
+> 经过整理后的“精简”流程
+> 
+> "Image-Type-8-bit"（转换图片为8-bit）——"Image-Adjust-Threshold"（调整阈值）——"Process-Binary-Fill Holes"（填补细胞空隙，可选）——"Process-Binary-Watershed"（分离相连细胞，可选）——"Analyze-Analyze Particles"（细胞计数）
 
-[【科研人必备！用Image J做细胞计数竟然这么简单？】](https://www.bilibili.com/video/BV1W6CEY6E7q)
+文字资料：[ImageJ实用技巧——自动细胞计数(解放双手篇)](https://zhuanlan.zhihu.com/p/54959707)
+
+视频资料：[【科研人必备！用Image J做细胞计数竟然这么简单？】](https://www.bilibili.com/video/BV1W6CEY6E7q)
+
+视频资料：[【用imagej对细胞核自动计数（相似结构也行）】](https://www.bilibili.com/video/BV1CG411U7oC)
 - 我一般将之用于DAPI计数，也就是细胞核的总数统计
 
-## 2.2 共定位分析及计数（使用ImageJ）
+## 2.2 共定位分析及双染计数（使用ImageJ）
 
 [【利用ImageJ完成双重免疫荧光共定位与计数分析】](https://www.bilibili.com/video/BV19gkzBTE8K)
+- 共定位分析借助“colocalization finder”插件完成，点击此处跳转[插件官方页面](https://imagej.net/ij/plugins/colocalization-finder.htmlv)
+
+[【Imagej荧光共定位自动统计，更多标也行~】](https://www.bilibili.com/video/BV1xi4y1r7oZ) 
