@@ -75,3 +75,20 @@
 - 可以得到一个共定位曲线
 
 [【Imagej荧光共定位自动统计，更多标也行~】](https://www.bilibili.com/video/BV1xi4y1r7oZ) 
+
+---
+# 3. Western Blot
+
+## 3.1 条带分析
+**使用Imagej获得WB条带数值，经过整理后的“最简”Protocol**
+> 1. `"Image-Type-8-bit"`（转换图片为8-bit）
+> 2. `"Process-Subtract Background"`（背景矫正）
+> 3. 用`矩形工具`框选一行或一列条带
+> 4. `Analyze-Gels-Select First Lane`或者`Ctrl + 1`（将这一行条带设置为第一道）
+> 5. `Analyze -> Gels -> Plot Lanes`或者`Ctrl + 3`（画出这一道条带，在横线上的profile）
+> 6. 利用直线将每个峰封口（按住Shift可垂直作线）
+> 7. 用`魔法棒工具`依次点选每个峰
+---
+**📚 参考资料**
+
+[ImageJ实用技巧——Western Blot定量分析深入探究(定量分析篇)(]https://zhuanlan.zhihu.com/p/56500792)
