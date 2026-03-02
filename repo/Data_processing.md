@@ -79,7 +79,7 @@
 ---
 # 3. Western Blot
 
-## 3.1 条带分析
+## 3.1 条带分析（使用ImageJ）
 **使用Imagej获得WB条带数值，经过整理后的“最简”Protocol**
 > 1. `"Image-Type-8-bit"`（转换图片为8-bit）
 > 2. `"Process-Subtract Background"`（背景矫正）
