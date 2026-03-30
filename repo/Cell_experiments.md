@@ -121,6 +121,15 @@
 
 ## 4.4 信号通路/蛋白变化
 
+### 4.4.1 qRT-PCR
+
+[【qRT-PCR最详细全流程！看完包会！】](https://www.bilibili.com/video/BV1QSDGYREEn)
+- 现在试剂盒较为成熟，每个试剂盒的流程不尽相同，应当以对应的试剂盒说明书为标准
+- 该视频为竖版，文字内容字体较小
+
+[【qPCR数据处理及分析作图】](https://www.bilibili.com/video/BV1d54y1P7PC)
+- 该视频有较为完整的qPCR数据分析方法，可参考
+
 ### 4.4.x qPCR/免疫荧光/WB
 暂未进行学习，后期拓展补充
 
