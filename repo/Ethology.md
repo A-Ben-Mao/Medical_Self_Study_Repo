@@ -49,9 +49,9 @@
 
 ## 2.2 悬尾实验 (Tail Suspension Test, TST)
 
-【《动物实验》行为学：悬尾实验】 https://www.bilibili.com/video/BV1TF411o7Kd)
+[【《动物实验》行为学：悬尾实验】](https://www.bilibili.com/video/BV1TF411o7Kd)
 
-【抑郁症（三十三）抑郁症的动物模型（三）——悬尾实验TST】 https://www.bilibili.com/video/BV1NeqoYqEan)
+[【抑郁症（三十三）抑郁症的动物模型（三）——悬尾实验TST】](https://www.bilibili.com/video/BV1NeqoYqEan)
 
 
 ## 2.3 糖水偏好实验 (Sucrose Preference Test, SPT) ⭐⭐⭐
