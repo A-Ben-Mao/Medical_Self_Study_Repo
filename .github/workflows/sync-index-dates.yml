@@ -1,0 +1,51 @@
+name: Sync Topic Dates to Web Page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'repo/*.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update dates in docs/index.html
+        run: |
+          node -e '
+          const fs = require("fs");
+          let html = fs.readFileSync("docs/index.html", "utf8");
+          const map = {
+            "repo/Bulk_RNA-seq.md": "rna",
+            "repo/Radiomics.md": "radio",
+            "repo/Cell_experiments.md": "cell",
+            "repo/Ethology.md": "etho",
+            "repo/Data_processing.md": "data"
+          };
+          let changed = false;
+          const { execSync } = require("child_process");
+          for (const [file, id] of Object.entries(map)) {
+            try {
+              const date = execSync("git log -1 --format=%cd --date=format:%Y-%m-%d -- " + file).toString().trim();
+              if (!date) continue;
+              const regex = new RegExp("(id: " + "'" + id + "'" + "[\\s\\S]*?updated: " + "'" + ")[^" + "'" + "]*(" + "'" + ")");
+              const before = html.match(regex);
+              html = html.replace(regex, "$1" + date + "$2");
+              if (before && before[0] !== html.match(regex)?.[0]) changed = true;
+            } catch(e) {}
+          }
+          if (changed) fs.writeFileSync("docs/index.html", html);
+          '
+
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto sync topic updated dates"
+          file_pattern: docs/index.html
