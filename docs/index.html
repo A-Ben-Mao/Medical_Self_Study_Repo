@@ -497,21 +497,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 #content-view :hover > .heading-anchor { opacity: 1; }
 
 /* ===== Content Visual Enhancements ===== */
-/* External link domain icons */
-#content-view a[href*="bilibili.com"]::before { content: "📺 "; font-size: .9em; }
-#content-view a[href*="youtube.com"]::before  { content: "▶️ "; font-size: .9em; }
-#content-view a[href*="github.com"]::before   { content: "🐙 "; font-size: .9em; }
-#content-view a[href*="csdn.net"]::before     { content: "📝 "; font-size: .9em; }
-/* Link category visual — video (pink) vs repo (indigo) */
-#content-view a[href*="bilibili.com"],
-#content-view a[href*="youtube.com"] {
-  border-left: 3px solid #ec4899;
-  padding-left: 6px;
-}
-#content-view a[href*="github.com"] {
-  border-left: 3px solid #6366f1;
-  padding-left: 6px;
-}
+/* External link domain icons — video vs web page */
+#content-view a[href*="bilibili.com"]::before,
+#content-view a[href*="youtube.com"]::before { content: "📺 "; font-size: .9em; }
+#content-view a[href*="github.com"]::before,
+#content-view a[href*="csdn.net"]::before     { content: "📄 "; font-size: .9em; }
 /* Better list styling */
 #content-view li {
   padding: 4px 0;
@@ -524,11 +514,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border: none; height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
   margin: 2em 0;
-}
-/* Blockquote icon */
-#content-view blockquote::before {
-  content: "💡 ";
-  font-size: 1.1em;
 }
 /* Copy button for code blocks */
 .copy-btn {
