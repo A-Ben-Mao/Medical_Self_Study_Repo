@@ -35,7 +35,7 @@
 
 ### 3.1.1 使用插件SwissSkullStripper进行自动剥离
 
-文字说明：https://forum.slicercn.com/t/topic/5511
+文字说明：[SlicerCN论坛讨论](https://forum.slicercn.com/t/topic/5511)
 
 视频演示（非官方）：[【3d slicer 计算大脑体积，去除颅骨】](https://www.bilibili.com/video/BV1vm421V7ZW/)
 
