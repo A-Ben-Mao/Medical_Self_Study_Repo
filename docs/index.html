@@ -1021,6 +1021,11 @@ contentBody.addEventListener('click', function(e) {
   const prefix = RAW + '/';
   if (href.startsWith(prefix)) {
     const rel = href.slice(prefix.length);
+    // Non-markdown files (images, PDFs, etc.) — open in new tab
+    if (!rel.endsWith('.md')) {
+      window.open(href, '_blank');
+      return;
+    }
     const match = TOPICS.find(t => t.file === rel);
     navigate(rel, match ? match.id : 'home');
   }
