@@ -198,7 +198,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .hero p {
   font-size: 16px; color: var(--text-muted);
-  margin-top: 8px; max-width: 600px;
+  margin-top: 8px;
   line-height: 1.6;
 }
 .hero-stats {
@@ -326,20 +326,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text-muted); font-size: 15px;
 }
 
-/* Recent Updates */
-.recent-section { padding-bottom: 40px; }
-.recent-list { list-style: none; }
-.recent-list li {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  transition: background .15s;
-  cursor: pointer;
-}
-.recent-list li:hover { background: var(--bg-sidebar); }
-.recent-list .r-icon { font-size: 16px; }
-.recent-list .r-title { font-size: 14px; font-weight: 500; flex: 1; }
-.recent-list .r-date { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
 
 /* ===== Links Section ===== */
 #links-section {
@@ -473,6 +459,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   font-size: .88em;
   line-height: 1.6;
   border: 1px solid var(--border);
+  position: relative;
 }
 #content-view pre code { background: none; padding: 0; border-radius: 0; }
 #content-view table {
@@ -501,10 +488,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   box-shadow: var(--shadow);
   margin: .8em 0;
 }
-#content-view hr {
-  border: none; border-top: 1px solid var(--border);
-  margin: 1.5em 0;
-}
 #content-view .heading-anchor {
   margin-left: -1.2em; padding-right: .3em;
   opacity: 0; transition: opacity .15s;
@@ -512,6 +495,47 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 #content-view :hover > .heading-anchor { opacity: 1; }
+
+/* ===== Content Visual Enhancements ===== */
+/* External link domain icons */
+#content-view a[href*="bilibili.com"]::before { content: "📺 "; font-size: .9em; }
+#content-view a[href*="github.com"]::before   { content: "🐙 "; font-size: .9em; }
+#content-view a[href*="csdn.net"]::before     { content: "📝 "; font-size: .9em; }
+#content-view a[href*="youtube.com"]::before  { content: "▶️ "; font-size: .9em; }
+/* Better list styling */
+#content-view li {
+  padding: 4px 0;
+  line-height: 1.7;
+}
+#content-view ul li::marker { color: var(--accent); }
+#content-view ol li::marker { color: var(--accent); font-weight: 600; }
+/* Fancy hr */
+#content-view hr {
+  border: none; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 2em 0;
+}
+/* Blockquote icon */
+#content-view blockquote::before {
+  content: "💡 ";
+  font-size: 1.1em;
+}
+/* Copy button for code blocks */
+.copy-btn {
+  position: absolute; top: 8px; right: 8px;
+  padding: 4px 10px; font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s;
+  font-family: inherit;
+}
+pre:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+.copy-btn.copied { color: var(--green); border-color: var(--green); }
 
 /* ===== Loading / Error ===== */
 #loading, #error {
@@ -540,8 +564,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .anim-stats { animation: fadeUp .5s .15s both; }
 .anim-filters { animation: fadeUp .5s .3s both; }
 .anim-cards { animation: fadeUp .5s .4s both; }
-.anim-recent { animation: fadeUp .5s .5s both; }
-.anim-links { animation: fadeUp .5s .55s both; }
+.anim-links { animation: fadeUp .5s .5s both; }
 
 /* ===== Mobile ===== */
 #menu-btn {
@@ -629,11 +652,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
       <h2 class="section-title">📂 全部专题</h2>
       <div class="topic-grid" id="topic-grid"></div>
       <div id="filter-no-results">没有匹配的专题</div>
-    </div>
-
-    <div class="recent-section anim-recent">
-      <h2 class="section-title">📝 最近更新</h2>
-      <ul class="recent-list" id="recent-list"></ul>
     </div>
 
     <!-- Links section -->
@@ -726,7 +744,6 @@ const error = $('#error');
 const navList = $('#nav-list');
 const searchBox = $('#search-box');
 const topicGrid = $('#topic-grid');
-const recentList = $('#recent-list');
 const tocList = $('#toc-list');
 const tocMobile = $('#toc-mobile');
 const tocMobileList = $('#toc-mobile-list');
@@ -815,6 +832,27 @@ function setupTOCLinks() {
         history.replaceState(null, '', '#' + id);
       }
     });
+  });
+}
+
+/* ===== Copy button for code blocks ===== */
+function initCopyButtons() {
+  contentBody.querySelectorAll('pre').forEach(pre => {
+    if (pre.querySelector('.copy-btn')) return;
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = '复制';
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code');
+      if (!code) return;
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        btn.textContent = '已复制';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000);
+      } catch { btn.textContent = '失败'; }
+    });
+    pre.appendChild(btn);
   });
 }
 
@@ -927,22 +965,6 @@ function renderDashboard() {
     });
   });
 
-  const sorted = [...topics].sort((a, b) => b.updated.localeCompare(a.updated)).slice(0, 3);
-  recentList.innerHTML = sorted.map(t => `
-    <li data-id="${t.id}">
-      <span class="r-icon">${t.icon}</span>
-      <span class="r-title">${t.label}</span>
-      <span class="badge ${t.status}">${t.status === 'active' ? '更新中' : '已归档'}</span>
-      <span class="r-date">${t.updated}</span>
-    </li>
-  `).join('');
-  recentList.querySelectorAll('li').forEach(li => {
-    li.addEventListener('click', () => {
-      const topic = TOPICS.find(t => t.id === li.dataset.id);
-      if (topic) navigate(topic.file, topic.id);
-    });
-  });
-
   initFilters();
   applyFilters();
 }
@@ -986,6 +1008,7 @@ async function navigate(file, id) {
     loading.classList.add('hidden');
     contentBody.innerHTML = html;
     buildTOC();
+    initCopyButtons();
   } catch (e) {
     loading.classList.add('hidden');
     error.classList.remove('hidden');
