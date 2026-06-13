@@ -290,10 +290,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .topic-card:active { transform: translateY(-1px); }
 .topic-card.filter-hidden {
-  opacity: 0; transform: scale(.95);
-  max-height: 0; margin: 0; padding: 0 24px;
-  overflow: hidden; pointer-events: none;
-  border-color: transparent;
+  display: none;
 }
 .topic-card-header {
   display: flex; align-items: center; gap: 10px;
@@ -1101,9 +1098,14 @@ document.addEventListener('keydown', e => {
 
 /* ===== Router ===== */
 function route() {
-  const hash = location.hash.slice(1).replace(/^\/+/, '');
-  if (!hash) { showDashboard(); return; }
-  const match = TOPICS.find(t => t.id === hash);
+  const raw = location.hash.slice(1);
+  // Ignore heading anchors (e.g. #section-name) — browser handles scroll natively
+  if (!raw.startsWith('/')) {
+    if (!raw) showDashboard();
+    return;
+  }
+  const id = raw.replace(/^\/+/, '');
+  const match = TOPICS.find(t => t.id === id);
   if (match && match.file) { navigate(match.file, match.id); return; }
   showDashboard();
 }
