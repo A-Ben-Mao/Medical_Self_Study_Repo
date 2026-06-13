@@ -499,9 +499,19 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* ===== Content Visual Enhancements ===== */
 /* External link domain icons */
 #content-view a[href*="bilibili.com"]::before { content: "📺 "; font-size: .9em; }
+#content-view a[href*="youtube.com"]::before  { content: "▶️ "; font-size: .9em; }
 #content-view a[href*="github.com"]::before   { content: "🐙 "; font-size: .9em; }
 #content-view a[href*="csdn.net"]::before     { content: "📝 "; font-size: .9em; }
-#content-view a[href*="youtube.com"]::before  { content: "▶️ "; font-size: .9em; }
+/* Link category visual — video (pink) vs repo (indigo) */
+#content-view a[href*="bilibili.com"],
+#content-view a[href*="youtube.com"] {
+  border-left: 3px solid #ec4899;
+  padding-left: 6px;
+}
+#content-view a[href*="github.com"] {
+  border-left: 3px solid #6366f1;
+  padding-left: 6px;
+}
 /* Better list styling */
 #content-view li {
   padding: 4px 0;
@@ -714,8 +724,8 @@ const RAW = `https://raw.githubusercontent.com/${REPO.owner}/${REPO.name}/${REPO
 
 const TOPICS = [
   { id: 'home',  label: '首页',         icon: '🏠', file: '', tags: [] },
-  { id: 'rna',   label: '普通转录组学',  icon: '🧬', file: 'repo/Bulk_RNA-seq.md',
-    desc: '涉及普通转录组（Bulk RNA-seq）文章套路解读及具体分析方法',
+  { id: 'rna',   label: '转录组学分析',  icon: '🧬', file: 'repo/Bulk_RNA-seq.md',
+    desc: '涵盖 Bulk RNA-seq 与 scRNA-seq 的标准分析流程与个人整理的开源仓库',
     status: 'archived', created: '2025-11-28', updated: '2025-11-28', tags: ['组学', '生物信息'] },
   { id: 'radio', label: '颅脑影像处理',  icon: '🧠', file: 'repo/Radiomics.md',
     desc: '涉及一些基础的软件使用，拓展的代码处理等',
@@ -763,7 +773,7 @@ function renderMarkdown(text, filePath) {
     return `<img src="${href}" alt="${alt || ''}"${title ? ` title="${title}"` : ''} loading="lazy">`;
   };
   renderer.link = function({ href, title, text }) {
-    if (href && href.endsWith('.md') && !href.startsWith('http')) {
+    if (href && !href.startsWith('http') && !href.startsWith('#')) {
       const resolved = href.startsWith('/') ? RAW + href : base + '/' + href.replace(/^\.\//, '');
       return `<a href="${resolved}" data-md-link="true">${text}</a>`;
     }
