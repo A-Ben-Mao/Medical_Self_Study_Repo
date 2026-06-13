@@ -137,3 +137,11 @@
 
 ### 4.5.x 转染 / 病毒感染（siRNA / shRNA / CRISPR / 质粒）
 暂未进行学习，后期拓展补充
+
+## 4.x 小鼠神经元原代细胞提取
+
+[【原代皮层海马神经元培养难在提取单细胞，重在包被一下床】](https://www.bilibili.com/video/BV1LJZyBhEbv/)
+
+[【原代神经元细胞分离】](https://www.bilibili.com/video/BV1JZmSYPEQQ/)
+
+[【科研第三弹：小鼠🐀神经元原代细胞的提取教学】](https://www.bilibili.com/video/BV1rpQ2YNEcd/)
