@@ -91,4 +91,4 @@
 ---
 **📚 参考资料**
 
-[ImageJ实用技巧——Western Blot定量分析深入探究(定量分析篇)(]https://zhuanlan.zhihu.com/p/56500792)
+[ImageJ实用技巧——Western Blot定量分析深入探究(定量分析篇)](https://zhuanlan.zhihu.com/p/56500792)
