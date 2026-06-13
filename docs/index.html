@@ -158,6 +158,23 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   transition: background var(--transition), margin-left var(--transition);
 }
 
+/* ===== Content Area (flex: content + TOC) ===== */
+#content-area {
+  display: none;
+}
+#content-area:not(.hidden) {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 0 48px;
+  gap: 0;
+}
+#content-area #content-view {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 0 80px;
+}
+
 /* ===== Dashboard ===== */
 #dashboard {
   display: block;
@@ -169,7 +186,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* Hero */
 .hero {
-  padding: 56px 0 40px;
+  padding: 56px 0 32px;
 }
 .hero h1 {
   font-size: 36px; font-weight: 700;
@@ -211,7 +228,42 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 #back-home a:hover { color: var(--accent); text-decoration: none; }
 
-/* Topic Grid */
+/* ===== Filter Bar ===== */
+#filter-bar {
+  margin-bottom: 20px;
+}
+.filter-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px; margin-bottom: 10px;
+}
+.filter-label {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  min-width: 36px;
+}
+.filter-pill {
+  display: inline-flex; align-items: center;
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px; font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+  user-select: none;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ===== Topic Grid ===== */
 .section-title {
   font-size: 18px; font-weight: 600;
   margin-bottom: 16px;
@@ -220,7 +272,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding-bottom: 32px;
+  padding-bottom: 12px;
 }
 .topic-card {
   background: var(--bg-card);
@@ -228,7 +280,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-radius: var(--radius);
   padding: 22px 24px;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: opacity .3s, transform .3s, box-shadow var(--transition), border-color var(--transition), max-height .3s, margin .3s, padding .3s;
   box-shadow: var(--shadow-sm);
 }
 .topic-card:hover {
@@ -237,14 +289,18 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-color: var(--accent);
 }
 .topic-card:active { transform: translateY(-1px); }
+.topic-card.filter-hidden {
+  opacity: 0; transform: scale(.95);
+  max-height: 0; margin: 0; padding: 0 24px;
+  overflow: hidden; pointer-events: none;
+  border-color: transparent;
+}
 .topic-card-header {
   display: flex; align-items: center; gap: 10px;
   margin-bottom: 8px;
 }
 .topic-card-header .icon { font-size: 22px; }
-.topic-card-header h3 {
-  font-size: 16px; font-weight: 600;
-}
+.topic-card-header h3 { font-size: 16px; font-weight: 600; }
 .topic-card .desc {
   font-size: 14px; color: var(--text-muted);
   line-height: 1.6;
@@ -257,6 +313,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 14px;
 }
+.topic-card-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.topic-card-tags .tag {
+  font-size: 11px; padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
 .badge {
   display: inline-block;
   font-size: 11px; font-weight: 600;
@@ -266,14 +331,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .badge.active { background: var(--green-bg); color: var(--green); }
 .badge.archived { background: var(--amber-bg); color: var(--amber); }
-.topic-card .date {
-  font-size: 12px; color: var(--text-muted);
+.topic-card .date { font-size: 12px; color: var(--text-muted); }
+#filter-no-results {
+  display: none; text-align: center;
+  padding: 40px 16px;
+  color: var(--text-muted); font-size: 15px;
 }
 
 /* Recent Updates */
-.recent-section {
-  padding-bottom: 60px;
-}
+.recent-section { padding-bottom: 40px; }
 .recent-list { list-style: none; }
 .recent-list li {
   display: flex; align-items: center; gap: 12px;
@@ -287,46 +353,130 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .recent-list .r-title { font-size: 14px; font-weight: 500; flex: 1; }
 .recent-list .r-date { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
 
-/* ===== Content View ===== */
-#content-view { display: none; }
-#content-view:not(.hidden) { display: block; }
-#content-body {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 40px 48px 80px;
+/* ===== Links Section ===== */
+#links-section {
+  padding-bottom: 60px;
 }
+.links-grid {
+  display: flex; flex-wrap: wrap; gap: 16px;
+}
+.link-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  flex: 1; min-width: 200px;
+  transition: all .2s;
+  box-shadow: var(--shadow-sm);
+}
+.link-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.link-icon { font-size: 22px; flex-shrink: 0; }
+.link-info { display: flex; flex-direction: column; }
+.link-title { font-weight: 600; font-size: 14px; }
+.link-desc { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+
+/* ===== TOC Sidebar ===== */
+#toc-sidebar {
+  display: none;
+  width: 200px;
+  flex-shrink: 0;
+  padding: 48px 12px 0 0;
+  align-self: flex-start;
+  position: sticky; top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+#content-area.has-toc #toc-sidebar { display: block; }
+#toc-title {
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  padding-left: 16px;
+}
+#toc-list { list-style: none; padding: 0; margin: 0; }
+#toc-list a {
+  display: block;
+  padding: 4px 0 4px 16px;
+  font-size: 13px; line-height: 1.5;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#toc-list a.toc-h2 { padding-left: 16px; }
+#toc-list a.toc-h3 { padding-left: 28px; font-size: 12.5px; }
+#toc-list a.toc-active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 500;
+}
+#toc-list a:hover { color: var(--accent); }
+#toc-sidebar::-webkit-scrollbar { width: 3px; }
+#toc-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Mobile TOC */
+#toc-mobile {
+  display: none;
+  margin-bottom: 20px;
+}
+#toc-mobile summary {
+  cursor: pointer; font-weight: 600; font-size: 14px;
+  user-select: none; padding: 4px 0;
+}
+#toc-mobile-list {
+  list-style: none; padding: 8px 0 4px;
+  margin-top: 6px;
+  border-top: 1px solid var(--border);
+}
+#toc-mobile-list a {
+  display: block; padding: 5px 0;
+  font-size: 14px; color: var(--text-muted);
+  text-decoration: none;
+}
+#toc-mobile-list a.toc-h3 { padding-left: 16px; font-size: 13px; }
 
 /* ===== Markdown Styling ===== */
-#content-body h1, #content-body h2, #content-body h3, #content-body h4 {
+#content-view h1, #content-view h2, #content-view h3, #content-view h4 {
   margin-top: 1.6em; margin-bottom: .5em;
   font-weight: 600; line-height: 1.4;
+  scroll-margin-top: 80px;
 }
-#content-body h1 { font-size: 1.65em; border-bottom: 1px solid var(--border); padding-bottom: .3em; }
-#content-body h2 {
+#content-view h1 { font-size: 1.65em; border-bottom: 1px solid var(--border); padding-bottom: .3em; }
+#content-view h2 {
   font-size: 1.3em;
   padding-left: 14px;
   border-left: 3px solid var(--accent);
 }
-#content-body h3 { font-size: 1.12em; }
-#content-body h1:first-child { margin-top: 0; }
-#content-body p { margin: .8em 0; color: var(--text); }
-#content-body ul, #content-body ol { padding-left: 1.6em; margin: .6em 0; }
-#content-body li { margin: .25em 0; }
-#content-body blockquote {
+#content-view h3 { font-size: 1.12em; }
+#content-view h1:first-child { margin-top: 0; }
+#content-view p { margin: .8em 0; color: var(--text); }
+#content-view ul, #content-view ol { padding-left: 1.6em; margin: .6em 0; }
+#content-view li { margin: .25em 0; }
+#content-view blockquote {
   margin: 1em 0; padding: .6em 1em;
   border-left: 4px solid var(--accent);
   background: var(--accent-soft);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
-#content-body blockquote p { margin: .3em 0; }
-#content-body code {
+#content-view blockquote p { margin: .3em 0; }
+#content-view code {
   font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
   font-size: .88em;
   background: var(--code-bg);
   padding: 2px 6px;
   border-radius: 4px;
 }
-#content-body pre {
+#content-view pre {
   margin: 1em 0;
   padding: 16px 20px;
   background: var(--code-bg);
@@ -336,8 +486,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   line-height: 1.6;
   border: 1px solid var(--border);
 }
-#content-body pre code { background: none; padding: 0; border-radius: 0; }
-#content-body table {
+#content-view pre code { background: none; padding: 0; border-radius: 0; }
+#content-view table {
   width: 100%; border-collapse: separate; border-spacing: 0;
   margin: 1em 0;
   font-size: .93em;
@@ -345,45 +495,43 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
-#content-body th, #content-body td {
+#content-view th, #content-view td {
   padding: 10px 14px;
   border-bottom: 1px solid var(--border);
   text-align: left;
 }
-#content-body th {
+#content-view th {
   background: var(--bg-sidebar);
   font-weight: 600;
   border-bottom: 1px solid var(--border);
 }
-#content-body tr:last-child td { border-bottom: none; }
-#content-body tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
-#content-body img {
+#content-view tr:last-child td { border-bottom: none; }
+#content-view tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+#content-view img {
   max-width: 100%; height: auto;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow);
   margin: .8em 0;
 }
-#content-body hr {
+#content-view hr {
   border: none; border-top: 1px solid var(--border);
   margin: 1.5em 0;
 }
-#content-body .heading-anchor {
+#content-view .heading-anchor {
   margin-left: -1.2em; padding-right: .3em;
   opacity: 0; transition: opacity .15s;
   color: var(--text-muted); font-weight: 400; font-size: .85em;
   text-decoration: none;
 }
-#content-body :hover > .heading-anchor { opacity: 1; }
+#content-view :hover > .heading-anchor { opacity: 1; }
 
 /* ===== Loading / Error ===== */
 #loading, #error {
-  max-width: 880px; margin: 0 auto;
-  padding: 80px 48px;
   text-align: center; color: var(--text-muted);
   display: none;
 }
-#loading:not(.hidden) { display: flex; align-items: center; justify-content: center; }
-#error:not(.hidden) { display: block; }
+#loading:not(.hidden) { display: flex; align-items: center; justify-content: center; padding: 80px 0; }
+#error:not(.hidden) { display: block; padding: 80px 0; }
 .spinner {
   width: 26px; height: 26px;
   border: 3px solid var(--border);
@@ -402,8 +550,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .anim-hero { animation: fadeUp .5s both; }
 .anim-stats { animation: fadeUp .5s .15s both; }
-.anim-cards { animation: fadeUp .5s .3s both; }
-.anim-recent { animation: fadeUp .5s .45s both; }
+.anim-filters { animation: fadeUp .5s .3s both; }
+.anim-cards { animation: fadeUp .5s .4s both; }
+.anim-recent { animation: fadeUp .5s .5s both; }
+.anim-links { animation: fadeUp .5s .55s both; }
 
 /* ===== Mobile ===== */
 #menu-btn {
@@ -424,6 +574,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 #nav-list::-webkit-scrollbar { width: 4px; }
 #nav-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
+@media (max-width: 1024px) {
+  #content-area:not(.hidden) { flex-direction: column; padding: 0 20px; }
+  #content-area #content-view { padding: 24px 0 60px; }
+  #toc-sidebar { display: none !important; }
+  #toc-mobile { display: block; }
+}
 @media (max-width: 768px) {
   #menu-btn { display: block; }
   #sidebar { transform: translateX(-100%); }
@@ -431,13 +587,13 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   #sidebar-overlay.open { display: block; }
   #content-wrap { margin-left: 0; }
   #dashboard { padding: 0 20px; }
-  #content-body { padding: 24px 20px 60px; }
   #back-home { padding: 16px 20px 0; }
-  .hero { padding: 32px 0 24px; }
+  .hero { padding: 28px 0 20px; }
   .hero h1 { font-size: 28px; }
-  .hero-stats { gap: 16px; font-size: 13px; flex-wrap: wrap; }
+  .hero-stats { gap: 14px; font-size: 13px; flex-wrap: wrap; }
   .topic-grid { grid-template-columns: 1fr; gap: 12px; }
   .topic-card { padding: 18px 20px; }
+  .links-grid { flex-direction: column; }
 }
 </style>
 </head>
@@ -474,14 +630,53 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
       </div>
     </div>
 
+    <!-- Filter bar -->
+    <div class="anim-filters" id="filter-bar">
+      <div class="filter-row" id="status-filters">
+        <span class="filter-label">状态</span>
+      </div>
+      <div class="filter-row" id="tag-filters">
+        <span class="filter-label">分类</span>
+      </div>
+    </div>
+
     <div class="anim-cards">
       <h2 class="section-title">📂 全部专题</h2>
       <div class="topic-grid" id="topic-grid"></div>
+      <div id="filter-no-results">没有匹配的专题</div>
     </div>
 
     <div class="recent-section anim-recent">
       <h2 class="section-title">📝 最近更新</h2>
       <ul class="recent-list" id="recent-list"></ul>
+    </div>
+
+    <!-- Links section -->
+    <div class="anim-links" id="links-section">
+      <h2 class="section-title">🔗 相关链接</h2>
+      <div class="links-grid">
+        <a href="https://github.com/A-Ben-Mao/Medical_Self_Study_Repo" target="_blank" rel="noopener" class="link-card">
+          <span class="link-icon">📖</span>
+          <div class="link-info">
+            <span class="link-title">GitHub 仓库</span>
+            <span class="link-desc">源码与资源文件</span>
+          </div>
+        </a>
+        <a href="https://github.com/A-Ben-Mao" target="_blank" rel="noopener" class="link-card">
+          <span class="link-icon">👤</span>
+          <div class="link-info">
+            <span class="link-title">GitHub 主页</span>
+            <span class="link-desc">A-Ben-Mao 的个人主页</span>
+          </div>
+        </a>
+        <a href="https://space.bilibili.com/3632308559022298" target="_blank" rel="noopener" class="link-card">
+          <span class="link-icon">📺</span>
+          <div class="link-info">
+            <span class="link-title">Bilibili 空间</span>
+            <span class="link-desc">视频教程与学习记录</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -490,11 +685,22 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     <a href="#/" id="back-link">← 返回首页</a>
   </div>
 
-  <!-- Content -->
-  <div id="content-view" class="hidden">
-    <div id="loading" class="hidden"><div class="spinner"></div><span>加载中…</span></div>
-    <div id="error" class="hidden"><div class="err-icon">⚠️</div><p>内容加载失败，请稍后重试</p></div>
-    <div id="content-body"></div>
+  <!-- Content Area (flex: content + TOC) -->
+  <div id="content-area" class="hidden">
+    <div id="content-view">
+      <!-- Mobile TOC -->
+      <details id="toc-mobile">
+        <summary>📑 目录</summary>
+        <ul id="toc-mobile-list"></ul>
+      </details>
+      <div id="loading" class="hidden"><div class="spinner"></div><span>加载中…</span></div>
+      <div id="error" class="hidden"><div class="err-icon">⚠️</div><p>内容加载失败，请稍后重试</p></div>
+      <div id="content-body"></div>
+    </div>
+    <nav id="toc-sidebar">
+      <div id="toc-title">目录</div>
+      <ul id="toc-list"></ul>
+    </nav>
   </div>
 </div>
 
@@ -504,30 +710,31 @@ const REPO = { owner: 'A-Ben-Mao', name: 'Medical_Self_Study_Repo', branch: 'mai
 const RAW = `https://raw.githubusercontent.com/${REPO.owner}/${REPO.name}/${REPO.branch}`;
 
 const TOPICS = [
-  { id: 'home',    label: '首页',         icon: '🏠', file: '' },
-  { id: 'rna',     label: '普通转录组学',  icon: '🧬', file: 'repo/Bulk_RNA-seq.md',
+  { id: 'home',  label: '首页',         icon: '🏠', file: '', tags: [] },
+  { id: 'rna',   label: '普通转录组学',  icon: '🧬', file: 'repo/Bulk_RNA-seq.md',
     desc: '涉及普通转录组（Bulk RNA-seq）文章套路解读及具体分析方法',
-    status: 'archived', created: '2025-11-28', updated: '2025-11-28' },
-  { id: 'radio',   label: '颅脑影像处理',  icon: '🧠', file: 'repo/Radiomics.md',
+    status: 'archived', created: '2025-11-28', updated: '2025-11-28', tags: ['组学', '生物信息'] },
+  { id: 'radio', label: '颅脑影像处理',  icon: '🧠', file: 'repo/Radiomics.md',
     desc: '涉及一些基础的软件使用，拓展的代码处理等',
-    status: 'active', created: '2025-11-28', updated: '2026-04-22' },
-  { id: 'cell',    label: '细胞实验基础',  icon: '🔬', file: 'repo/Cell_experiments.md',
+    status: 'active', created: '2025-11-28', updated: '2026-04-22', tags: ['影像', '软件'] },
+  { id: 'cell',  label: '细胞实验基础',  icon: '🔬', file: 'repo/Cell_experiments.md',
     desc: '涉及体外细胞实验的一些基础理论知识与实操',
-    status: 'active', created: '2025-12-04', updated: '2026-03-30' },
-  { id: 'etho',    label: '常见动物行为学实验', icon: '🐭', file: 'repo/Ethology.md',
-    desc: '涉及文献中经常阅读到的一些大小鼠行为学研究，了解后有助于研究设计与文献阅读',
-    status: 'archived', created: '2025-12-07', updated: '2025-12-12' },
-  { id: 'data',    label: '常用实验数据处理',  icon: '📊', file: 'repo/Data_processing.md',
+    status: 'active', created: '2025-12-04', updated: '2026-03-30', tags: ['细胞', '实验操作'] },
+  { id: 'etho',  label: '常见动物行为学实验', icon: '🐭', file: 'repo/Ethology.md',
+    desc: '涉及文献中经常阅读到的一些大小鼠行为学研究',
+    status: 'archived', created: '2025-12-07', updated: '2025-12-12', tags: ['行为学', '动物'] },
+  { id: 'data',  label: '常用实验数据处理',  icon: '📊', file: 'repo/Data_processing.md',
     desc: '存放一些常用的实验结果处理流程，如WB、IF等',
-    status: 'active', created: '2026-01-07', updated: '2026-03-02' },
+    status: 'active', created: '2026-01-07', updated: '2026-03-02', tags: ['数据处理', '实验'] },
 ];
 
 /* ===== DOM refs ===== */
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 const dashboard = $('#dashboard');
-const contentView = $('#content-view');
+const contentArea = $('#content-area');
 const backHome = $('#back-home');
+const contentView = $('#content-view');
 const contentBody = $('#content-body');
 const loading = $('#loading');
 const error = $('#error');
@@ -535,6 +742,10 @@ const navList = $('#nav-list');
 const searchBox = $('#search-box');
 const topicGrid = $('#topic-grid');
 const recentList = $('#recent-list');
+const tocList = $('#toc-list');
+const tocMobile = $('#toc-mobile');
+const tocMobileList = $('#toc-mobile-list');
+const filterNoResults = $('#filter-no-results');
 
 /* ===== Init marked ===== */
 marked.setOptions({ gfm: true, breaks: false });
@@ -565,8 +776,155 @@ function renderMarkdown(text, filePath) {
   return marked.parse(text, { renderer });
 }
 
-/* ===== Navigation items (sidebar) ===== */
+/* ===== Build TOC from rendered content ===== */
+function buildTOC() {
+  const headings = contentBody.querySelectorAll('h1, h2, h3');
+  const hasToc = headings.length >= 2;
+
+  tocList.innerHTML = '';
+  tocMobileList.innerHTML = '';
+
+  if (!hasToc) {
+    contentArea.classList.remove('has-toc');
+    tocMobile.open = false;
+    return;
+  }
+
+  contentArea.classList.add('has-toc');
+
+  headings.forEach(h => {
+    const level = parseInt(h.tagName[1]);
+    const id = h.id;
+    const text = h.textContent.replace(/^#\s*/, '').trim();
+    if (!id || !text) return;
+
+    const a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = text;
+    a.className = 'toc-h' + level;
+    a.dataset.targetId = id;
+
+    // Desktop
+    const clone = a.cloneNode(true);
+    tocList.appendChild(clone);
+
+    // Mobile
+    const mClone = a.cloneNode(true);
+    tocMobileList.appendChild(mClone);
+  });
+
+  initScrollSpy();
+}
+
+/* ===== Scroll-spy for TOC ===== */
+let spyTimer = null;
+function initScrollSpy() {
+  const links = tocList.querySelectorAll('a');
+  if (!links.length) return;
+
+  const entries = [];
+  links.forEach(a => {
+    const el = document.getElementById(a.dataset.targetId);
+    if (el) entries.push({ el, link: a });
+  });
+
+  function update() {
+    const scrollY = window.scrollY + 100;
+    let active = entries[0];
+    for (let i = entries.length - 1; i >= 0; i--) {
+      if (entries[i].el.offsetTop <= scrollY) { active = entries[i]; break; }
+    }
+    links.forEach(l => l.classList.remove('toc-active'));
+    active.link.classList.add('toc-active');
+  }
+
+  window.addEventListener('scroll', () => {
+    if (spyTimer) return;
+    spyTimer = requestAnimationFrame(() => { update(); spyTimer = null; });
+  }, { passive: true });
+  update();
+}
+
+/* ===== NAV items (sidebar) ===== */
 const NAV = TOPICS;
+
+/* ===== Filter state ===== */
+let activeStatus = 'all';
+let activeTag = 'all';
+
+function initFilters() {
+  // Status pills
+  const statusRow = $('#status-filters');
+  const statuses = [
+    { value: 'all', label: '全部' },
+    { value: 'active', label: '更新中' },
+    { value: 'archived', label: '已归档' },
+  ];
+  statuses.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-pill' + (s.value === 'all' ? ' active' : '');
+    btn.dataset.type = 'status';
+    btn.dataset.value = s.value;
+    btn.textContent = s.label;
+    btn.addEventListener('click', () => {
+      statusRow.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      activeStatus = s.value;
+      applyFilters();
+    });
+    statusRow.appendChild(btn);
+  });
+
+  // Tag pills — auto-generated from unique tags
+  const tagRow = $('#tag-filters');
+  const allTags = [...new Set(TOPICS.flatMap(t => t.tags).filter(Boolean))].sort();
+  const allBtn = document.createElement('button');
+  allBtn.className = 'filter-pill active';
+  allBtn.dataset.type = 'tag';
+  allBtn.dataset.value = 'all';
+  allBtn.textContent = '全部';
+  allBtn.addEventListener('click', () => {
+    tagRow.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    allBtn.classList.add('active');
+    activeTag = 'all';
+    applyFilters();
+  });
+  tagRow.appendChild(allBtn);
+
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-pill';
+    btn.dataset.type = 'tag';
+    btn.dataset.value = tag;
+    btn.textContent = tag;
+    btn.addEventListener('click', () => {
+      tagRow.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = tag;
+      applyFilters();
+    });
+    tagRow.appendChild(btn);
+  });
+}
+
+function applyFilters() {
+  const cards = topicGrid.querySelectorAll('.topic-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const topic = TOPICS.find(t => t.id === card.dataset.id);
+    if (!topic) return;
+
+    let show = true;
+    if (activeStatus !== 'all' && topic.status !== activeStatus) show = false;
+    if (show && activeTag !== 'all' && !topic.tags.includes(activeTag)) show = false;
+
+    card.classList.toggle('filter-hidden', !show);
+    if (show) visible++;
+  });
+
+  filterNoResults.style.display = visible === 0 ? 'block' : 'none';
+}
 
 /* ===== Dashboard ===== */
 function renderDashboard() {
@@ -574,6 +932,7 @@ function renderDashboard() {
   const active = topics.filter(t => t.status === 'active').length;
   const archived = topics.filter(t => t.status === 'archived').length;
 
+  $('#stat-total').textContent = topics.length;
   $('#stat-active').textContent = active;
   $('#stat-archived').textContent = archived;
 
@@ -585,16 +944,15 @@ function renderDashboard() {
       </div>
       <div class="desc">${t.desc}</div>
       <div class="topic-card-footer">
+        <div class="topic-card-tags">${t.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
         <span class="badge ${t.status}">${t.status === 'active' ? '更新中' : '已归档'}</span>
-        <span class="date">更新于 ${t.updated}</span>
       </div>
     </div>
   `).join('');
 
   topicGrid.querySelectorAll('.topic-card').forEach(card => {
     card.addEventListener('click', () => {
-      const id = card.dataset.id;
-      const topic = TOPICS.find(t => t.id === id);
+      const topic = TOPICS.find(t => t.id === card.dataset.id);
       if (topic) navigate(topic.file, topic.id);
     });
   });
@@ -610,17 +968,19 @@ function renderDashboard() {
   `).join('');
   recentList.querySelectorAll('li').forEach(li => {
     li.addEventListener('click', () => {
-      const id = li.dataset.id;
-      const topic = TOPICS.find(t => t.id === id);
+      const topic = TOPICS.find(t => t.id === li.dataset.id);
       if (topic) navigate(topic.file, topic.id);
     });
   });
+
+  initFilters();
+  applyFilters();
 }
 
 /* ===== Show / Hide views ===== */
 function showDashboard() {
   dashboard.classList.remove('hidden');
-  contentView.classList.add('hidden');
+  contentArea.classList.add('hidden');
   backHome.classList.add('hidden');
   updateNav('home');
   history.replaceState(null, '', '#/');
@@ -628,7 +988,7 @@ function showDashboard() {
 
 function showContent() {
   dashboard.classList.add('hidden');
-  contentView.classList.remove('hidden');
+  contentArea.classList.remove('hidden');
   backHome.classList.remove('hidden');
 }
 
@@ -642,6 +1002,10 @@ async function navigate(file, id) {
   loading.classList.remove('hidden');
   error.classList.add('hidden');
   contentBody.innerHTML = '';
+  tocList.innerHTML = '';
+  tocMobileList.innerHTML = '';
+  contentArea.classList.remove('has-toc');
+  tocMobile.open = false;
 
   try {
     const url = `${RAW}/${file}`;
@@ -651,6 +1015,7 @@ async function navigate(file, id) {
     const html = renderMarkdown(md, file);
     loading.classList.add('hidden');
     contentBody.innerHTML = html;
+    buildTOC();
   } catch (e) {
     loading.classList.add('hidden');
     error.classList.remove('hidden');
@@ -673,7 +1038,7 @@ contentBody.addEventListener('click', function(e) {
   }
 });
 
-/* ===== Sidebar build ===== */
+/* ===== Sidebar ===== */
 function buildSidebar() {
   navList.innerHTML = '';
   NAV.forEach(item => {
