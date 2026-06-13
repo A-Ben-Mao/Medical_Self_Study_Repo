@@ -44,7 +44,7 @@ jobs:
           for file in $CHANGED_FILES; do
             case "$file" in
               repo/Bulk_RNA-seq.md)
-                update_last_time "普通转录组学"
+                update_last_time "转录组学分析"
                 ;;
               repo/Radiomics.md)
                 update_last_time "颅脑影像处理"
