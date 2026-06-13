@@ -310,15 +310,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 14px;
 }
-.topic-card-tags {
-  display: flex; gap: 6px; flex-wrap: wrap;
-}
-.topic-card-tags .tag {
-  font-size: 11px; padding: 2px 8px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  color: var(--accent);
-}
 .badge {
   display: inline-block;
   font-size: 11px; font-weight: 600;
@@ -632,9 +623,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
       <div class="filter-row" id="status-filters">
         <span class="filter-label">状态</span>
       </div>
-      <div class="filter-row" id="tag-filters">
-        <span class="filter-label">分类</span>
-      </div>
     </div>
 
     <div class="anim-cards">
@@ -864,7 +852,6 @@ const NAV = TOPICS;
 
 /* ===== Filter state ===== */
 let activeStatus = 'all';
-let activeTag = 'all';
 
 function initFilters() {
   // Status pills
@@ -889,36 +876,6 @@ function initFilters() {
     statusRow.appendChild(btn);
   });
 
-  // Tag pills — auto-generated from unique tags
-  const tagRow = $('#tag-filters');
-  const allTags = [...new Set(TOPICS.flatMap(t => t.tags).filter(Boolean))].sort();
-  const allBtn = document.createElement('button');
-  allBtn.className = 'filter-pill active';
-  allBtn.dataset.type = 'tag';
-  allBtn.dataset.value = 'all';
-  allBtn.textContent = '全部';
-  allBtn.addEventListener('click', () => {
-    tagRow.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    allBtn.classList.add('active');
-    activeTag = 'all';
-    applyFilters();
-  });
-  tagRow.appendChild(allBtn);
-
-  allTags.forEach(tag => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-pill';
-    btn.dataset.type = 'tag';
-    btn.dataset.value = tag;
-    btn.textContent = tag;
-    btn.addEventListener('click', () => {
-      tagRow.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      activeTag = tag;
-      applyFilters();
-    });
-    tagRow.appendChild(btn);
-  });
 }
 
 function applyFilters() {
@@ -931,7 +888,6 @@ function applyFilters() {
 
     let show = true;
     if (activeStatus !== 'all' && topic.status !== activeStatus) show = false;
-    if (show && activeTag !== 'all' && !topic.tags.includes(activeTag)) show = false;
 
     card.classList.toggle('filter-hidden', !show);
     if (show) visible++;
@@ -958,7 +914,7 @@ function renderDashboard() {
       </div>
       <div class="desc">${t.desc}</div>
       <div class="topic-card-footer">
-        <div class="topic-card-tags">${t.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+        <span class="date">更新于 ${t.updated}</span>
         <span class="badge ${t.status}">${t.status === 'active' ? '更新中' : '已归档'}</span>
       </div>
     </div>
