@@ -25,46 +25,23 @@ jobs:
             exit 0
           fi
 
-          TODAY=$(TZ=Asia/Shanghai date "+%Y-%m-%d")
-
-          BEFORE_SHA="${{ github.event.before }}"
-          AFTER_SHA="${{ github.sha }}"
-
-          # 如果是第一次提交，before 会是全 0
-          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
-            CHANGED_FILES=$(git show --name-only --pretty="" "$AFTER_SHA")
-          else
-            CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA")
-          fi
-
           update_last_time() {
             MODULE="$1"
-            sed -i "s/^\(| ${MODULE} | [^|]* | [0-9\-]\+ | \).*\(|\)$/\1${TODAY}\2/" README.md
+            FILE="$2"
+            DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%d -- "$FILE")
+            if [ -n "$DATE" ]; then
+              sed -i "s/^\(| ${MODULE} | [^|]* | [0-9\-]\+ | \).*\(|\)$/\1${DATE}\2/" README.md
+            fi
           }
 
-          for file in $CHANGED_FILES; do
-            case "$file" in
-              repo/Bulk_RNA-seq.md)
-                update_last_time "转录组学分析"
-                ;;
-              repo/Radiomics.md)
-                update_last_time "颅脑影像处理"
-                ;;
-              repo/Cell_experiments.md)
-                update_last_time "细胞实验基础"
-                ;;
-              repo/Ethology.md)
-                update_last_time "常见动物行为学实验"
-                ;;
-              repo/Data_processing.md)
-                update_last_time "常用实验数据处理"
-                ;;
-            esac
-          done
+          update_last_time "转录组学分析"     "repo/Bulk_RNA-seq.md"
+          update_last_time "颅脑影像处理"     "repo/Radiomics.md"
+          update_last_time "细胞实验基础"     "repo/Cell_experiments.md"
+          update_last_time "常见动物行为学实验" "repo/Ethology.md"
+          update_last_time "常用实验数据处理"   "repo/Data_processing.md"
 
-          if ! git diff --quiet README.md; then
-            sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${TODAY}/" README.md
-          fi
+          TODAY=$(TZ=Asia/Shanghai date "+%Y-%m-%d")
+          sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${TODAY}/" README.md
 
       - name: Commit and push if README changed
         run: |
