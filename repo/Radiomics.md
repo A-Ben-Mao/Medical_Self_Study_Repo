@@ -18,6 +18,7 @@
 ## 2.2 在 Windows 环境下使用 Matlab 的 SPM 进行配准与标准化
 
 有 Matlab 的情况下用 SPM 比较方便，图形界面操作，对新手友好。
+
 [【神经影像处理_SPM实操_PET和MRI的图像标准化】](https://www.bilibili.com/video/BV1Y1YXzME9k/)
 
 [使用Matlab SPM12与MRIcroGL进行头核磁ROI的标准化与Overlap图的制作](https://blog.csdn.net/YimingChen98/article/details/129855869)（需 csdn 会员）
@@ -25,6 +26,7 @@
 ## 2.3 在 Linux 环境下使用 ANTs 进行配准与标准化
 
 ANTs 是目前配准效果最好的工具之一，但全命令行操作，学习成本比 SPM 高。
+
 [【【核磁共振影像数据处理】高级的配准软件ANTS使用介绍】](https://www.bilibili.com/video/BV1hB4y1K7gf/)
 - 基本是参考官方手册演示，没涉及太多具体参数调优，暂未找到更优教程
 
@@ -44,6 +46,7 @@ SwissSkullStripper 是 3DSlicer 的一个插件，可实现一键自动颅骨剥
 ### 3.1.2 通过阈值剔除
 
 若不想额外安装插件，也可以直接用阈值法进行颅骨剔除，原理基于不同组织间信号强度的差异。
+
 [【3D Slicer共学 | CT和MRI去脑壳】](https://www.bilibili.com/video/BV1KG4y1Y7N9/)（官方视频中文配音版）
 
 ---
