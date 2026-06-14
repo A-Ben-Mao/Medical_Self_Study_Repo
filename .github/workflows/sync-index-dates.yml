@@ -24,4 +24,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto sync topic updated dates"
-          file_pattern: docs/index.html
+          pull_options: "--rebase"
+        file_pattern: docs/index.html
