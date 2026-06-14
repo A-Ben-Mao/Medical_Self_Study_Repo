@@ -25,4 +25,4 @@ jobs:
         with:
           commit_message: "chore: auto sync topic updated dates"
           pull_options: "--rebase"
-        file_pattern: docs/index.html
+          file_pattern: docs/index.html
