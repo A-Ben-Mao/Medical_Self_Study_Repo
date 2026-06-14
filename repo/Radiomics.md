@@ -1,6 +1,7 @@
 # 1. 3DSlicer 基础操作
 
 [【影像组学 3Dslicer软件教学（上）】](https://www.bilibili.com/video/BV1w44y147ph/)
+
 [【影像组学 3Dslicer软件教学（下）】](https://www.bilibili.com/video/BV1VP4y1b73b/)
 - 时长约 1h，同一个 up 主，覆盖了 3DSlicer 的基本操作
 - 该 up 主还有补充教学和 pyradiomics 的内容，质量可
@@ -18,6 +19,7 @@
 
 有 Matlab 的情况下用 SPM 比较方便，图形界面操作，对新手友好。
 [【神经影像处理_SPM实操_PET和MRI的图像标准化】](https://www.bilibili.com/video/BV1Y1YXzME9k/)
+
 [使用Matlab SPM12与MRIcroGL进行头核磁ROI的标准化与Overlap图的制作](https://blog.csdn.net/YimingChen98/article/details/129855869)（需 csdn 会员）
 
 ## 2.3 在 Linux 环境下使用 ANTs 进行配准与标准化
