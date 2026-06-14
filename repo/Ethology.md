@@ -19,18 +19,21 @@
 
 将动物置于开阔环境，利用其趋暗避亮、趋边避中的天性来评价焦虑水平。在中央区域停留时间越长，提示焦虑水平越低；反之，长时间贴壁行走提示焦虑状态。
 [【动物焦虑行为学实验-开场实验（旷场实验）】](https://www.bilibili.com/video/BV1Y8411D7FA)
+
 [【旷场实验数据分析】](https://www.bilibili.com/video/BV1iSHYeNETF)（指标解读和理论基础）
 
 ## 1.2 高架十字迷宫 (Elevated Plus Maze, EPM) ⭐⭐⭐
 
 十字形迷宫悬空架设，两条开臂和两条闭臂。动物在探索欲和恐惧之间的冲突决定其在开臂的探索时间——开臂停留时间越长，焦虑水平越低。
 [【动物焦虑行为学实验-高架十字迷宫实验】](https://www.bilibili.com/video/BV1d8411273b)
+
 [【动物行为学 高架十字迷宫教程 EPMT】](https://www.bilibili.com/video/BV14m4y1L7Br)
 
 ## 1.3 明暗箱实验 (Light/Dark Box)
 
 利用动物趋暗避亮的天性。箱体分为明暗两个区域，记录动物在两侧的穿梭频率和在明侧的停留时间。
 [浅析动物黑白箱/明暗箱（light/dark box）实验方法与注意事项](https://zhuanlan.zhihu.com/p/497567624)
+
 [明暗箱实验 - 中国大百科全书](https://www.zgbk.com/ecph/words?SiteID=1&ID=69146&Type=bkzyb)
 
 ---
@@ -40,18 +43,21 @@
 
 将动物置于无法逃脱的水环境中，动物先挣扎后进入不动状态，反映行为绝望程度。抗抑郁药物可延长挣扎时间、缩短不动时间。该实验在抗抑郁药物筛选中广泛应用。
 [【【研究生必备-10】强迫游泳实验视频+经验分享】](https://www.bilibili.com/video/BV167411b7XV)（附 PPT 讲解和 JoVE 原视频）
+
 [【抑郁症-小鼠强迫游泳实验】](https://www.bilibili.com/video/BV1Sv411b7k4)（BGM 较欢快，注意音量）
 
 ## 2.2 悬尾实验 (Tail Suspension Test, TST)
 
 原理与强迫游泳类似，将水面替换为悬吊。动物被悬吊后挣扎至放弃，记录不动时间作为抑郁指标。相比强迫游泳，排除了水环境本身可能带来的干扰因素。
 [【《动物实验》行为学：悬尾实验】](https://www.bilibili.com/video/BV1TF411o7Kd)
+
 [【抑郁症（三十三）抑郁症的动物模型（三）——悬尾实验TST】](https://www.bilibili.com/video/BV1NeqoYqEan)
 
 ## 2.3 糖水偏好实验 (Sucrose Preference Test, SPT) ⭐⭐⭐
 
 快感缺失是抑郁症的核心症状之一。正常小鼠对糖水存在天然偏好，抑郁小鼠的糖水偏好率会显著降低。操作简便，是抑郁模型中使用率最高的行为学指标之一。
 [【糖水偏好实验的步骤（含流程图）】](https://www.bilibili.com/video/BV18o4y1Z7W9)
+
 [【小鼠糖水偏好实验】](https://www.bilibili.com/video/BV1QzWAejE5t)（均为理论知识）
 
 ---
