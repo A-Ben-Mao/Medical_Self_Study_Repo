@@ -20,6 +20,7 @@ jobs:
 
       - name: Update module last updated date in README
         run: |
+          git pull --rebase origin main 2>/dev/null || true
           if [ ! -f README.md ]; then
             exit 0
           fi
@@ -75,7 +76,6 @@ jobs:
             exit 0
           fi
 
-          git pull --rebase origin main
           git add README.md
           git commit -m "docs: auto update module last updated date"
           git push
