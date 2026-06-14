@@ -75,6 +75,7 @@ jobs:
             exit 0
           fi
 
+          git pull --rebase origin main
           git add README.md
           git commit -m "docs: auto update module last updated date"
           git push
