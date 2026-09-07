@@ -39,6 +39,7 @@ jobs:
           update_last_time "细胞实验基础"     "repo/Cell_experiments.md"
           update_last_time "常见动物行为学实验" "repo/Ethology.md"
           update_last_time "常用实验数据处理"   "repo/Data_processing.md"
+          update_last_time "神经科学动物实验操作" "repo/Neuro_animal_operation.md"
 
           TODAY=$(TZ=Asia/Shanghai date "+%Y-%m-%d")
           sed -i "s/后续将持续更新，最近一次更新时间为：.*/后续将持续更新，最近一次更新时间为：${TODAY}/" README.md

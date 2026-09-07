@@ -9,6 +9,7 @@ const map = {
   'repo/Cell_experiments.md': 'cell',
   'repo/Ethology.md': 'etho',
   'repo/Data_processing.md': 'data',
+  'repo/Neuro_animal_operation.md': 'animal',
 };
 
 let result = html;

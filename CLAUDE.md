@@ -24,12 +24,13 @@ Key JS functions:
 
 ### Content files: `repo/*.md`
 
-Five markdown files, one per topic:
+Six markdown files, one per topic:
 - `Bulk_RNA-seq.md` — transcriptomics analysis
 - `Radiomics.md` — brain imaging (radiomics)
 - `Cell_experiments.md` — cell biology experiments  
 - `Ethology.md` — animal behavior
 - `Data_processing.md` — experimental data processing (ImageJ protocols, WB analysis)
+- `Neuro_animal_operation.md` — neuroscience animal operations (currently: brain tissue harvest & cryosectioning)
 
 ### GitHub Actions: `.github/workflows/`
 
